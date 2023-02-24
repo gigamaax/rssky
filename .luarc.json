@@ -1,0 +1,24 @@
+{
+    "$schema": "https://raw.githubusercontent.com/sumneko/vscode-lua/master/setting/schema.json",
+    "diagnostics": {
+        "enable": true,
+        "globals": [
+            "vim",
+        ]
+    },
+    "Lua.formatting.defaultConfig": {
+      "indent_style": "tab",
+      "tab_width": 4,
+      "continuration_indent": 4,
+      "quote_style": "double",
+      "trailing_table_separator": "always",
+      "call_arg_parentheses": "always",
+      "max_line_length": 120,
+      "align_call_args": true,
+      "align_function_params": true,
+      "align_continuous_assign_statement": true,
+      "align_continuous_rect_table_field": true,
+      "align_if_branch": true,
+      "align_array_table": true
+    }
+}
