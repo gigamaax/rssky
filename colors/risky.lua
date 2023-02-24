@@ -1,1 +1,1 @@
-require('risky').load()
+require("risky").load()
