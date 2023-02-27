@@ -1,90 +1,75 @@
 local palette = require("risky.palette")
+local highlighter = require("risky.highlighter")
 
----@class Theme
-local theme = {
-  bg = palette.gray_900,
-  fg = palette.gray_10,
-
-  func = palette.blue_500,
-  identifier = palette.blue_300,
-  keyword = palette.blue_400,
-  special = palette.blue_200,
-  variable = palette.blue_50,
-  variable_builtin = palette.purple_50,
-
-  comment = palette.green_100,
-  operator = palette.green_300,
-
-  bool = palette.purple_300,
-  const = palette.purple_100,
-  number = palette.purple_100,
-  string = palette.purple_200,
-
-  accent_normal_1 = palette.gray_700,
-  accent_visual_1 = palette.blue_50,
-}
-
+-- FIXME: make a theme?
+---@class Highlight
 local highlights = {
-  Normal = { bg = theme.bg, fg = theme.fg },
+  -- Base Layer
+  Normal = { bg = palette.gray_900 },
+  ColorColumn = { bg = palette.gray_700 },
+  CursorLine = { bg = palette.gray_700 },
+  CursorLineNr = { fg = palette.white, bg = palette.gray_700 },
+  LineNr = { fg = palette.gray_500 },
+  SignColumn = { fg = palette.gray_900 },
+  NonText = { fg = palette.gray_700 },
 
-  Visual = { bg = theme.accent_visual_1, fg = palette.gray_900 },
-  Search = { link = "Visual" },
+  -- Primary layer
+  Comment = { fg = palette.blue_200 },
 
-  Comment = { fg = theme.comment, italic = true },
-  ColorColumn = { bg = theme.accent_normal_1 },
-  Cursor = { bg = palette.blue_600, fg = palette.blue_100 },
-  CursorLine = { bg = theme.accent_normal_1 },
-  CursorLineNr = { fg = theme.identifier },
-  LineNr = { fg = theme.accent_normal_1 },
-  Whitespace = { fg = theme.accent_normal_1 },
-  NonText = { fg = theme.accent_normal_1 },
-  SpecialKey = { link = "NonText" },
+  Identifier = { fg = palette.blue_200 },
+  Function = { fg = palette.blue_500 },
+  Statement = { fg = palette.blue_300, italic = true },
 
-  Keyword = { fg = theme.keyword },
-  Identifier = { fg = theme.identifier },
-  Function = { fg = theme.func, italic = true },
-  Method = { link = "Function" },
-  Statement = { fg = theme.operator },
-  Special = { fg = theme.special },
-  Operator = { fg = theme.operator },
-
-  Boolean = { fg = theme.bool },
-  Constant = { fg = theme.const },
-  Character = { link = "String" },
-  Float = { fg = theme.number },
+  Boolean = { fg = palette.blue_600 },
+  Character = { fg = palette.blue_200 },
+  Float = { fg = palette.blue_500  },
   Number = { link = "Float" },
-  String = { fg = theme.string },
+  String = { link = "Character" },
 
-  Directory = { fg = palette.orange_200 },
 
-  ["@attribute"] = { link = "Constant" },
-  ["@field"] = { link = "Identifier" },
-  ["@keyword"] = { link = "Keyword" },
-  ["@label"] = { link = "Label" },
+  -- Secondary layer
+  Visual = { bg = palette.purple_100, fg = palette.gray_700 },
+  Search = { link = "Visual" },
+  CurSearch = { link = "Visual" },
+  IncSearch = { link = "Visual" },
+
+  NormalFloat = { bg = palette.gray_900, fg = palette.purple_50 },
+  Pmenu = { link = "NormalFloat" },
+  PmenuSel = { bg = palette.gray_700 },
+
+  -- Accents
+  Directory = { fg = palette.red_200 },
+  Operator = { fg = palette.green_400 },
+  Special = { fg = palette.green_300 },
+
+  -- Special layer
+  diffAdded = { fg = palette.green_500 },
+  diffRemoved = { fg = palette.red_500 },
+  diffDeleted = { fg = palette.red_500 },
+  diffChanged = { fg = palette.orange_500 },
+  diffOldFile = { fg = palette.red_500 },
+  diffNewFile = { fg = palette.green_500 },
+
+  -- TS primary
   ["@method"] = { link = "Function" },
-  ["@operator"] = { link = "Operator" },
   ["@property"] = { link = "Identifier" },
-  ["@punctuation.delimiter"] = { fg = theme.comment },
-  ["@punctuation.bracket"] = { fg = theme.comment },
-  ["@punctuation.Special"] = { fg = theme.comment },
-  ["@symbol"] = { link = "Identifier" },
-  ["@variable"] = { fg = theme.variable },
-  ["@variable.builtin"] = { fg = theme.variable_builtin },
+  ["@variable"] = { fg = palette.blue_10 },
+  -- what does this color?
+  ["@variable.builtin"] = { fg = palette.blue_500 },
+
+  -- TS Secondary
+  ["@operator"] = { fg = palette.orange_200 },
+  ["@punctuation.bracket"] = { fg = palette.green_200 },
+  ["@punctuation.delimiter"] = { fg = palette.red_200 },
 }
-
-local function set_highlights()
-  --  vim.cmd("highlight clear")
-
-  for group, colors in pairs(highlights) do
-    vim.api.nvim_set_hl(0, group, colors)
-  end
-end
 
 local M = {}
 
 function M.load()
+  vim.cmd("highlight clear")
   vim.g.colors_name = "risky"
-  set_highlights()
+
+  highlighter.set(highlights)
 end
 
 return M
