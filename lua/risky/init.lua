@@ -5,24 +5,24 @@ local highlighter = require("risky.highlighter")
 ---@class Highlight
 local highlights = {
   -- Base Layer
-  Normal = { bg = palette.gray_900 },
   ColorColumn = { bg = palette.gray_700 },
   CursorLine = { bg = palette.gray_700 },
   CursorLineNr = { fg = palette.white, bg = palette.gray_700 },
+  Folded = { bg = palette.gray_900, fg = palette.blue_600 },
   LineNr = { fg = palette.gray_500 },
-  SignColumn = { fg = palette.gray_900 },
   NonText = { fg = palette.gray_700 },
+  Normal = { bg = palette.gray_900 },
+  SignColumn = { fg = palette.gray_900 },
 
   -- Primary layer
   Comment = { fg = palette.blue_200 },
-
   Identifier = { fg = palette.blue_200 },
   Function = { fg = palette.blue_500 },
   Statement = { fg = palette.blue_300, italic = true },
 
   Boolean = { fg = palette.blue_600 },
   Character = { fg = palette.blue_200 },
-  Float = { fg = palette.blue_500  },
+  Float = { fg = palette.blue_500 },
   Number = { link = "Float" },
   String = { link = "Character" },
 
