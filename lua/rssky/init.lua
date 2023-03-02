@@ -1,5 +1,5 @@
-local palette = require("risky.palette")
-local highlighter = require("risky.highlighter")
+local palette = require("rssky.palette")
+local highlighter = require("rssky.highlighter")
 
 -- FIXME: make a theme?
 ---@class Highlight
@@ -67,7 +67,7 @@ local M = {}
 
 function M.load()
   vim.cmd("highlight clear")
-  vim.g.colors_name = "risky"
+  vim.g.colors_name = "rssky"
 
   highlighter.set(highlights)
 end

@@ -1,4 +1,4 @@
-local palette = require("risky.palette")
+local palette = require("rssky.palette")
 
 return {
   normal = {
