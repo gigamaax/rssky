@@ -15,7 +15,7 @@ local highlights = {
   SignColumn = { fg = palette.gray_900 },
 
   -- Primary layer
-  Comment = { fg = palette.blue_200 },
+  Comment = { fg = palette.blue_50 },
   Identifier = { fg = palette.blue_200 },
   Function = { fg = palette.blue_500 },
   Statement = { fg = palette.blue_300, italic = true },
@@ -25,7 +25,6 @@ local highlights = {
   Float = { fg = palette.blue_500 },
   Number = { link = "Float" },
   String = { link = "Character" },
-
 
   -- Secondary layer
   Visual = { bg = palette.purple_100, fg = palette.gray_700 },
