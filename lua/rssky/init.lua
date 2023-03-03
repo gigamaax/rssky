@@ -1,65 +1,29 @@
-local palette = require("rssky.palette")
 local highlighter = require("rssky.highlighter")
+local palette = require("rssky.palette")
 
--- FIXME: make a theme?
----@class Highlight
-local highlights = {
-  -- Base Layer
-  ColorColumn = { bg = palette.gray_700 },
-  CursorLine = { bg = palette.gray_700 },
-  CursorLineNr = { fg = palette.white, bg = palette.gray_700 },
-  Folded = { bg = palette.gray_900, fg = palette.blue_600 },
-  LineNr = { fg = palette.gray_500 },
-  NonText = { fg = palette.gray_700 },
-  Normal = { bg = palette.gray_900 },
-  SignColumn = { fg = palette.gray_900 },
+---@class Theme
+local theme = {
+  base_bg = palette.gray_900,
+  base_fg = palette.gray_700,
+  base_bright = palette.white,
 
-  -- Primary layer
-  Comment = { fg = palette.blue_50 },
-  Identifier = { fg = palette.blue_200 },
-  Function = { fg = palette.blue_500 },
-  Statement = { fg = palette.blue_300, italic = true },
+  primary_bright = palette.blue_10,
+  primary_extralight = palette.blue_50,
+  primary_light = palette.blue_200,
+  primary_med = palette.blue_300,
+  primary_dark = palette.blue_500,
+  primary_extradark = palette.blue_600,
 
-  Boolean = { fg = palette.blue_600 },
-  Character = { fg = palette.blue_200 },
-  Float = { fg = palette.blue_500 },
-  Number = { link = "Float" },
-  String = { link = "Character" },
+  secondary_extralight = palette.purple_50,
+  secondary_light = palette.purple_100,
 
-  -- Secondary layer
-  Visual = { bg = palette.purple_100, fg = palette.gray_700 },
-  Search = { link = "Visual" },
-  CurSearch = { link = "Visual" },
-  IncSearch = { link = "Visual" },
+  accent_1 = palette.red_200,
+  accent_2 = palette.green_200,
+  accent_3 = palette.orange_200,
 
-  NormalFloat = { bg = palette.gray_900, fg = palette.purple_50 },
-  Pmenu = { link = "NormalFloat" },
-  PmenuSel = { bg = palette.gray_700 },
-
-  -- Accents
-  Directory = { fg = palette.red_200 },
-  Operator = { fg = palette.green_400 },
-  Special = { fg = palette.green_300 },
-
-  -- Special layer
-  diffAdded = { fg = palette.green_500 },
-  diffRemoved = { fg = palette.red_500 },
-  diffDeleted = { fg = palette.red_500 },
-  diffChanged = { fg = palette.orange_500 },
-  diffOldFile = { fg = palette.red_500 },
-  diffNewFile = { fg = palette.green_500 },
-
-  -- TS primary
-  ["@method"] = { link = "Function" },
-  ["@property"] = { link = "Identifier" },
-  ["@variable"] = { fg = palette.blue_10 },
-  -- what does this color?
-  ["@variable.builtin"] = { fg = palette.blue_500 },
-
-  -- TS Secondary
-  ["@operator"] = { fg = palette.orange_200 },
-  ["@punctuation.bracket"] = { fg = palette.green_200 },
-  ["@punctuation.delimiter"] = { fg = palette.red_200 },
+  special_error = palette.red_500,
+  special_warning = palette.orange_500,
+  special_success = palette.green_500,
 }
 
 local M = {}
@@ -68,7 +32,7 @@ function M.load()
   vim.cmd("highlight clear")
   vim.g.colors_name = "rssky"
 
-  highlighter.set(highlights)
+  highlighter.set(theme)
 end
 
 return M
