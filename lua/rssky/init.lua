@@ -14,6 +14,7 @@ local theme = {
   primary_dark = palette.blue_500,
   primary_extradark = palette.blue_600,
 
+  secondary_med = palette.purple_200,
   secondary_extralight = palette.purple_50,
   secondary_light = palette.purple_100,
 

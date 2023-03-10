@@ -17,6 +17,7 @@ function M.set(theme)
     Comment = { fg = theme.primary_extralight },
     Identifier = { fg = theme.primary_light },
     Function = { fg = theme.primary_dark },
+    PreProc = { fg = theme.primary_dark },
     Statement = { fg = theme.primary_med, italic = true },
 
     Boolean = { fg = theme.primary_extradark },
@@ -24,6 +25,8 @@ function M.set(theme)
     Float = { fg = theme.primary_dark },
     Number = { link = "Float" },
     String = { link = "Character" },
+
+    Type = { fg = theme.secondary_light, italic = true },
 
     -- Secondary layer
     Visual = { bg = theme.secondary_light, fg = theme.base_fg },
@@ -49,6 +52,7 @@ function M.set(theme)
     diffNewFile = { fg = theme.special_success },
 
     -- TS primary
+    ["@keyword.operator"] = { link = "Operator" },
     ["@method"] = { link = "Function" },
     ["@property"] = { link = "Identifier" },
     ["@variable"] = { fg = theme.primary_bright },
